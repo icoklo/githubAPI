@@ -53,14 +53,14 @@
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
-                    
+
                     <!-- if there are no logged users to my app-->
                     @if (Auth::guest())
                         <li><a href="{{ url('/login') }}">Login</a></li>
 
                     @else
                         <li><a href="{{ url('/register') }}">Register</a></li>
-                        <li> {{ Auth::user()->username }} | <a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                        <li> <a href="{{ url('/logout') }}"> {{ Auth::user()->username }} | Logout</a></li>
                     @endif
                 </ul>
             </div>

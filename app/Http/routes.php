@@ -22,8 +22,3 @@ Route::get('/home', function () {
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 
 Route::get('auth/register', 'Auth\AuthController@getRegister');
-
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
