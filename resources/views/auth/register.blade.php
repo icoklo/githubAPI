@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 @if (Auth::user()->role == 'admin')
 <div class="container">
     <div class="row">
