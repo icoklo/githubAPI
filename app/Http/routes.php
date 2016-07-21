@@ -19,3 +19,7 @@ Route::get('/home', function () {
     return "Hello world";
 });
 
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+
+Route::get('auth/register', 'Auth\AuthController@getRegister');
+
