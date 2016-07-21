@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if (Auth::user()->role == 'admin')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
@@ -95,4 +96,8 @@
         </div>
     </div>
 </div>
+@else
+<h2> Samo administrator moze pristupiti ovoj stranici! </h2>
+@endif
+
 @endsection
