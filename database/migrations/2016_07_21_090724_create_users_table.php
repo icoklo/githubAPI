@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWebhooksTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,14 @@ class CreateWebhooksTable extends Migration
      */
     public function up()
     {
-        Schema::create('webhooks', function (Blueprint $table) {
+        Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('username',30);
+            $table->string('password',60);
+            $table->string('email',30);
+            $table->string('role',30);
             $table->timestamps();
-            $table->
+            $table->rememberToken();
         });
     }
 
@@ -26,6 +30,6 @@ class CreateWebhooksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('webhooks');
+        Schema::drop('users');
     }
 }
