@@ -19,4 +19,4 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 
-Route::post('/github-data','GithubDataController@showData');
+Route::post('/github-data','GithubDataController@storeData');
