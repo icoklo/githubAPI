@@ -98,7 +98,9 @@
     </div>
 </div>
 @else
-<h2> Samo administrator moze pristupiti ovoj stranici! </h2>
+<div class="col-md-4 col-md-offset-4">
+    <h2> Samo administrator moze pristupiti ovoj stranici! </h2>
+</div>
 @endif
 
 @endsection

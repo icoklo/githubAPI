@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\GithubWebHooks;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -41,7 +42,7 @@ class GithubDataController extends Controller
 			$repository = $help->repository->full_name;
 			// echo $repository;
 
-			$web_hook = new Github_webhooks;
+			$web_hook = new GithubWebHooks;
 			$web_hook->event_name= $event_name;
 			// cijeli json od githuba
 			$web_hook->payload = $payload;
