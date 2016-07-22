@@ -15,10 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', function () {
-    return "Hello world";
-});
+Route::auth();
 
-Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::get('/home', 'HomeController@index');
 
-Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::get('/github-data','GithubDataController@showData');
