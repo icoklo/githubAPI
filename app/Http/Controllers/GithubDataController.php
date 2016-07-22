@@ -38,7 +38,9 @@ class GithubDataController extends Controller
 			// echo $pomocArray;
 			*/
 
+			// help variable which contains payload from github which is in json format
 			$help = json_decode($payload);
+
 			$repository = $help->repository->full_name;
 			// echo $repository;
 
