@@ -25,6 +25,6 @@ Route::post('/group','GroupController@insertGroup');
 
 Route::post('/group/{id}','GroupController@editGroup');
 
-Route::get('/group/{id}', "")->where('id', '[0-9]+');
+// Route::get('/group/{id}', "")->where('id', '[0-9]+');
 
-Route::get('/group/list', "");
+// Route::get('/group/list', "");
