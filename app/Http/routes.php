@@ -20,3 +20,11 @@ Route::auth();
 Route::get('/home', 'HomeController@index');
 
 Route::post('/github-data','GithubDataController@storeData');
+
+Route::post('/group','GroupController@insertGroup');
+
+Route::post('/group/{id}','GroupController@editGroup');
+
+Route::get('/group/{id}', "")->where('id', '[0-9]+');
+
+Route::get('/group/list', "");

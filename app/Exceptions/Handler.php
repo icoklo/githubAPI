@@ -17,10 +17,10 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        AuthorizationException::class,
-        HttpException::class,
-        ModelNotFoundException::class,
-        ValidationException::class,
+    AuthorizationException::class,
+    HttpException::class,
+    // ModelNotFoundException::class,
+    ValidationException::class,
     ];
 
     /**
@@ -45,6 +45,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        if($e instanceOf ModelNotFoundException)
+        {
+            // ako netko slucajno unese krivi id grupe i ulovi se ModelNotFoundException generira se ova greska sa kodom 404
+            abort(404);
+        }
+        else
+        {
+            return parent::render($request, $e);
+        }
+
     }
 }
