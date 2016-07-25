@@ -11,24 +11,31 @@
 |
 */
 
+// middleware ili filter koji filtrira http zahtjeve, znaci npr. postoji auth middleware koji ako se koristi na odredenoj
+// ruti prvo provjeri jeli korisnik autentificiran u app, ako jest pusta ga da izvrsi odredeni zahtjev, inace ga preusmjerava na login screen
+
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
+Route::get('/test','GroupController@test');
+
 Route::auth();
+
+Route::group(['middleware' => 'auth'], function(){
+
+	Route::post('/group','GroupController@createGroup'); // create group
+
+	Route::post('/group/{id}','GroupController@editGroup'); // edit grupe
+
+	Route::get('/group/list', 'GroupController@listGroups'); // lista svih grupa
+});
 
 Route::get('/home', 'HomeController@index');
 
 Route::post('/github-data','GithubDataController@storeData');
 
-Route::post('/save_group','GroupController@insertGroup');
 
-Route::post('/group/{id}','GroupController@editGroup');
-
-Route::get('/insert_group',function(){
-	return view('insert_group');
-});
 
 // Route::get('/group/{id}', "")->where('id', '[0-9]+');
 
-// Route::get('/group/list', "");
