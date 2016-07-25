@@ -28,6 +28,8 @@ Route::group(['middleware' => 'auth'], function(){
 
 	Route::post('/group/{id}','GroupController@editGroup'); // edit grupe
 
+	Route::get('/group/{id}', "")->where('id', '[0-9]+'); // show group data
+
 	Route::get('/group/list', 'GroupController@listGroups'); // lista svih grupa
 });
 
@@ -37,5 +39,5 @@ Route::post('/github-data','GithubDataController@storeData');
 
 
 
-// Route::get('/group/{id}', "")->where('id', '[0-9]+');
+
 
