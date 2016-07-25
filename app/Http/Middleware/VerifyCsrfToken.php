@@ -13,7 +13,7 @@ class VerifyCsrfToken extends BaseVerifier
      */
     protected $except = [
         '/github-data',
-        '/group',
+        '/group/*',
         '/save_group'
     ];
 }
