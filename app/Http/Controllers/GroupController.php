@@ -53,12 +53,13 @@ class GroupController extends Controller
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
-	public function listGroups() // sloziti
+	// function which will return all groups or empty array
+	public function listGroups()
 	{
 		$groups = Group::all();
 		$array = array();
 		foreach ($groups as $group){
-			$array[] = array('id' => $korisnik->id, 'Ime' => $korisnik->ime, 'Prezime' => $korisnik->prezime);
+			$array[] = array('id' => $group->id, 'Ime' => $group->ime, 'Prezime' => $group->prezime);
 		}
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
