@@ -59,7 +59,7 @@ class GroupController extends Controller
 		$groups = Group::all();
 		$array = array();
 		foreach ($groups as $group){
-			$array[] = array('id' => $group->id, 'Ime' => $group->ime, 'Prezime' => $group->prezime);
+			$array[] = array('id' => $group->id, 'name' => $group->name, 'description' => $group->description);
 		}
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
