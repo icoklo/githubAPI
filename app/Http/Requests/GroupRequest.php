@@ -19,7 +19,8 @@ class GroupRequest extends Request
             return true;
         }
         else{
-            return false;
+            abort(403, 'Unauthorized action.');
+            // return false;
         }
 
     }
