@@ -40,12 +40,9 @@ class GroupController extends Controller
 	{
 		$find_group = Group::findOrFail($id);
 
-		$old_name = $find_group -> name;
-		$old_description = $find_group -> description;
-
-		$group->name = $request->input('name');
-		$group->description = $request->input('description');
-		$group->save();
+		$find_group->name = $request->input('name');
+		$find_group->description = $request->input('description');
+		$find_group->save();
 
 		$poruka = "Uspjesno uredena grupa ". $request->input('name');
 		$polje = array('kod' => 200, 'poruka' => $poruka);
