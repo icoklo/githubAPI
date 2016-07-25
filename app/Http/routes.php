@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index');
 
 Route::post('/github-data','GithubDataController@storeData');
 
-Route::post('/save_group/','GroupController@insertGroup');
+Route::post('/save_group','GroupController@insertGroup');
 
 Route::post('/group/{id}','GroupController@editGroup');
 

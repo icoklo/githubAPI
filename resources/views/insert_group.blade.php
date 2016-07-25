@@ -10,7 +10,7 @@
 				<div class="panel-heading">Insert group</div>
 
 				<div class="panel-body">
-					<form method="POST" action="{{ url('/group/insert') }}">
+					<form method="POST" action="{{ url('/save_group') }}">
 						Group name:<br>
 						<input type="text" name="name" size="50">
 						<br>
