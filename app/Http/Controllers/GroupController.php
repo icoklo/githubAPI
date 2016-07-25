@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use App\Http\Requests\GroupRequest;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
