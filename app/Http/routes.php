@@ -21,9 +21,13 @@ Route::get('/home', 'HomeController@index');
 
 Route::post('/github-data','GithubDataController@storeData');
 
-Route::post('/group','GroupController@insertGroup');
+Route::post('/group/insert','GroupController@insertGroup');
 
 Route::post('/group/{id}','GroupController@editGroup');
+
+Route::get('/group',function(){
+	return view('insert_group');
+});
 
 // Route::get('/group/{id}', "")->where('id', '[0-9]+');
 
