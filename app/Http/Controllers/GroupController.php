@@ -26,6 +26,7 @@ class GroupController extends Controller
 
 	public function createGroup(GroupRequest $request) // unos i spremanje grupe radi
 	{
+		echo "tu smo";
 		$group = new Group;
 		$group->name = $request->input('name');
 		$group->description = $request->input('description');
