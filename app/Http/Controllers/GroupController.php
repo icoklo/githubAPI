@@ -13,7 +13,7 @@ class GroupController extends Controller
 
 	public function test()
 	{
-
+		// abort(405,'greska');
 		// return (new Response("<p>jej</p>"));
 		return response("<p>jej</p>");
 	}
