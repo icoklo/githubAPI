@@ -13,7 +13,14 @@ class GroupRequest extends Request
      */
     public function authorize()
     {
-        return false;
+        $user_role = Auth::user()->role;
+        if($user_role == 'admin'){
+            return true;
+        }
+        else{
+            return false;
+        }
+
     }
 
     /**
