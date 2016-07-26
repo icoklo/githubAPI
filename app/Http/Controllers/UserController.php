@@ -21,11 +21,13 @@ class UserController extends Controller
 
 	public function addUserToGroup(UserGroupRequest $request,$idKorisnika)
 	{
-		$groupName = $request->input('groupName');
+		$group_name = $request->input('groupName');
 		$user = User::findOrFail($idKorisnika);
 		$array = array();
-		$group = Group::where('name',$groupName);
-		echo $group->id;
+		$group = Group::where('name',$group_name);
+		$group_id = $group->id;
+		// echo $group->id;
+		echo $group_id;
 		// $user->groups()->attach($group->id);
 
 		$message = "Korisnik {$user->username} dodan u grupu {$group->name} .";
