@@ -21,7 +21,7 @@ class UserController extends Controller
 
 	public function addUserToGroup(UserGroupRequest $request,$idKorisnika)
 	{
-		$group_name = $request->input('group_name');
+		$group_name = $request->input('groupName');
 		$user = User::findOrFail($idKorisnika);
 		$array = array();
 
