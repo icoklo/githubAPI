@@ -15,7 +15,8 @@ class GroupController extends Controller
 	{
 		// abort(405,'greska');
 		// return (new Response("<p>jej</p>"));
-		return response("<p>jej</p>");
+		//return response("<p>jej</p>");
+		return new Response("Super");
 	}
 
 	public function createGroup(GroupRequest $request)
