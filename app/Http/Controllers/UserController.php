@@ -25,8 +25,9 @@ class UserController extends Controller
 		$user = User::findOrFail($id);
 		$array = array();
 		$group = Group::where('name',$groupName);
-		$user->groups()->attach($group->id);
-		
+		echo $group->id;
+		// $user->groups()->attach($group->id);
+
 		$message = "Korisnik {$user->username} dodan u grupu {$group->name} .";
 		$array = array('kod'=>200, 'poruka'=>$message);
 		return (new Response($array,200))->header('Content-Type', 'application/json');
