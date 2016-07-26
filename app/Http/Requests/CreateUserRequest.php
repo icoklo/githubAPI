@@ -14,6 +14,7 @@ class CreateUserRequest extends Request
 		// return false;
 		return true;
 	}
+
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
