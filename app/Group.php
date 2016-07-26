@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -21,6 +20,6 @@ class Group extends Model
     protected $dates = ['deleted_at'];
 
     public function users(){
-        return $this->belongsToMany('User');
+        return $this->belongsToMany('App\User');
     }
 }
