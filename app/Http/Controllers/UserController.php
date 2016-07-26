@@ -24,7 +24,7 @@ class UserController extends Controller
 		$group_name = $request->input('groupName');
 		$user = User::findOrFail($idKorisnika);
 		$array = array();
-		$group = Group::where('name',$group_name);
+		$group = Group::where('name',$group_name)->first();
 		$group_id = $group->id;
 		// echo $group->id;
 		echo $group_id;
