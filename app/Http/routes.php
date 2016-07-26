@@ -41,8 +41,6 @@ Route::group(['middleware' => ['auth','check.role']], function(){
 
 	Route::post('/group/{id}','GroupController@editGroup'); // edit grupe
 
-	Route::get('/group/{id}', 'GroupController@showGroupData')->where('id', '[0-9]+'); // show group data
-
 	Route::get('/group/list', 'GroupController@listGroups'); // lista svih grupa
 
 	Route::get('/user/list', 'UserController@listUsers'); // lista svih korisnika
@@ -50,9 +48,13 @@ Route::group(['middleware' => ['auth','check.role']], function(){
 	Route::post('/user/{id}', 'UserController@addUserToGroup');
 });
 
+Route::group(['middleware' => ['auth']], function(){
+
 Route::get('/user/groups', 'UserController@userGroups')->middleware('auth'); // korisnik ima izlist svih grupa u kojima se nalazi
 
 Route::get('/user/group/{id}', 'UserController@showMyGroupData')->middleware('auth'); // korisnik moze vidjeti podatke grupe u kojoj se nalazi
+
+});
 
 Route::get('/home', 'HomeController@index');
 

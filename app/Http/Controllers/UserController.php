@@ -51,7 +51,6 @@ class UserController extends Controller
 
 	public function checkUser($user_groups,$current_group)
 	{
-
 		// all groups user belongs to
 		foreach ($user_groups as $group) {
 			if($current_group->id === $group->id){
