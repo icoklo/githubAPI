@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 
 
-class CheckRole
+class CheckUserRole
 {
     /**
      * Handle an incoming request.
