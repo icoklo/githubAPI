@@ -16,6 +16,14 @@ class CheckRole
     public function handle($request, Closure $next)
     {
 
-        return $next($request);
+        $user_role = Auth::user()->role;
+        if($user_role == 'admin'){
+            // ako je prijavljeni korisnik admin tada ga pusti da izvrsi zahtjev
+            return $next($request);
+        }
+        else{
+            abort(403, "Samo administrator moze pristupiti ovoj stranici");
+        }
+
     }
 }

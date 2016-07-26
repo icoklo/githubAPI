@@ -14,15 +14,7 @@ class GroupRequest extends Request
      */
     public function authorize()
     {
-        $user_role = Auth::user()->role;
-        if($user_role == 'admin'){
-            return true;
-        }
-        else{
-            abort(403, 'Unauthorized action.');
-            // return false;
-        }
-
+        return true;
     }
 
     /**

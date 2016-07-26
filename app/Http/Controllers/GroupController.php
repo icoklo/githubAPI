@@ -45,7 +45,7 @@ class GroupController extends Controller
 
 	}
 
-	public function showGroupData(GroupRequest $request,$id)
+	public function showGroupData($id)
 	{
 		$find_group = Group::findOrFail($id);
 

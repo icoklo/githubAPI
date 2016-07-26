@@ -22,7 +22,8 @@ Route::get('/test','GroupController@test');
 
 Route::auth();
 
-Route::group(['middleware' => 'auth'], function(){
+// grupa ruta na kojima se koriste middleware-i auth i check.role 
+Route::group(['middleware' => ['auth','check.role']], function(){
 
 	Route::post('/group','GroupController@createGroup'); // create group
 
