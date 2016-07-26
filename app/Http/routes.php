@@ -30,7 +30,7 @@ Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
 Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'Auth\PasswordController@reset');
 
-// grupa ruta na kojima se koriste middleware-i auth i check.role 
+// grupa ruta na kojima se koriste middleware-i auth i check.role
 Route::group(['middleware' => ['auth','check.role']], function(){
 
 	// Registration Routes...

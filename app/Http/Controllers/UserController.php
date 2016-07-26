@@ -70,7 +70,7 @@ class UserController extends Controller
 		// grupa prema id
 		$array = array();
 
-		if($this->checkUser() === true){
+		if($this->checkUser($user_groups,$id) === true){
 			$array[] = array('id' => $group->id,'name' => $group->name, 'description' => $group->description);
 			return (new Response($array,200))->header('Content-Type', 'application/json');
 		}
