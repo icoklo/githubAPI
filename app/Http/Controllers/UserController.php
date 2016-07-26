@@ -40,7 +40,7 @@ class UserController extends Controller
 	public function userGroups()
 	{
 		$logged_user = Auth::user();
-		$groups = $logged_user->groups->get();
+		$groups = $logged_user->groups()->get();
 		$array = array();
 		foreach ($groups as $group) {
 			$array[] = array('id' => $group->id,'name' => $group->name, 'description' => $group->description);
