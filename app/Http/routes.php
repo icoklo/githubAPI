@@ -44,6 +44,10 @@ Route::group(['middleware' => ['auth','check.role']], function(){
 	Route::get('/group/{id}', 'GroupController@showGroupData')->where('id', '[0-9]+'); // show group data
 
 	Route::get('/group/list', 'GroupController@listGroups'); // lista svih grupa
+
+	Route::get('/user/list', 'UserController@listUsers'); // lista svih korisnika
+
+	Route::post('/user/{id}', 'UserController@editUser');
 });
 
 Route::get('/home', 'HomeController@index');

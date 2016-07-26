@@ -18,7 +18,7 @@ class GroupController extends Controller
 		return response("<p>jej</p>");
 	}
 
-	public function createGroup(GroupRequest $request) // unos i spremanje grupe radi
+	public function createGroup(GroupRequest $request)
 	{
 		// echo "tu smo";
 		$group = new Group;
