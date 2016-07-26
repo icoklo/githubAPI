@@ -49,9 +49,9 @@ class UserController extends Controller
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
-	public function checkUser($user_groups,$id)
+	public function checkUser($user_groups,$current_group)
 	{
-		$current_group = Group::findOrFail($id);
+
 		// all groups user belongs to
 		foreach ($user_groups as $group) {
 			if($current_group->id === $group->id){
@@ -69,9 +69,10 @@ class UserController extends Controller
 		$user_groups = $logged_user->groups;
 		// grupa prema id
 		$array = array();
+		$current_group = Group::findOrFail($id);
 
-		if($this->checkUser($user_groups,$id) === true){
-			$array[] = array('id' => $group->id,'name' => $group->name, 'description' => $group->description);
+		if($this->checkUser($user_groups,$current_group) === true){
+			$array[] = array('id' => $current_group->id,'name' => $current_group->name, 'description' => $current_group->description);
 			return (new Response($array,200))->header('Content-Type', 'application/json');
 		}
 		else{
