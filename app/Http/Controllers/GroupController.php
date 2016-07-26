@@ -7,7 +7,7 @@ use App\Http\Requests\GroupRequest;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
-// Sloziti da se pozove jedna funkcija u kojoj se bude napravil ispis podataka za korisnika
+
 class GroupController extends Controller
 {
 
@@ -28,6 +28,7 @@ class GroupController extends Controller
 		$group->save();
 		$message = "Grupa ". $request->input('name') ." je unesena.";
 		$array = array('kod' => 200, 'poruka' => $message);
+
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
@@ -46,22 +47,24 @@ class GroupController extends Controller
 
 	}
 
-	public function showGroupData($id)
+	/* public function showGroupData($id)
 	{
 		$find_group = Group::findOrFail($id);
 
 		$array = array('id' => $find_group->id, 'name' => $find_group->name, 'description' => $find_group->description);
 		return (new Response($array,200))->header('Content-Type', 'application/json');
-	}
+	} */
 
 	// function which will return all groups or empty array
 	public function listGroups()
 	{
+
 		$groups = Group::all();
 		$array = array();
 		foreach ($groups as $group){
 			$array[] = array('id' => $group->id, 'name' => $group->name, 'description' => $group->description);
 		}
+
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
