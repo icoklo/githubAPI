@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\Http\Requests\UserGroupRequest;
 use App\User;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
