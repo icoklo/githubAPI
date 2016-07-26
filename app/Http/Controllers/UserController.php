@@ -17,7 +17,7 @@ class UserController extends Controller
 		foreach ($users as $user){
 			$array[] = array('id' => $user->id, 'username' => $user->username, 'email' => $user->email, 'role' => $user->role);
 		}
-		return new Response($array,200)->header('Content-Type', 'application/json');
+		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
 	public function addUserToGroup(UserGroupRequest $request,$idKorisnika)
@@ -34,7 +34,7 @@ class UserController extends Controller
 
 		$message = "Korisnik {$user->username} dodan u grupu {$group->name} .";
 		$array = array('kod'=>200, 'poruka'=>$message);
-		return new Response($array,200)->header('Content-Type', 'application/json');
+		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
 	public function userGroups()
@@ -45,6 +45,6 @@ class UserController extends Controller
 		foreach ($groups as $group) {
 			$array[] = array('id' => $group->id,'name' => $group->name, 'description' => $group->description);
 		}
-		return new Response($array,200)->header('Content-Type', 'application/json');
+		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 }
