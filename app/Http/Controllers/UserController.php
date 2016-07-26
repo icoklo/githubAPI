@@ -19,10 +19,10 @@ class UserController extends Controller
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
-	public function addUserToGroup(UserGroupRequest $request,$id)
+	public function addUserToGroup(UserGroupRequest $request,$idKorisnika)
 	{
 		$groupName = $request->input('groupName');
-		$user = User::findOrFail($id);
+		$user = User::findOrFail($idKorisnika);
 		$array = array();
 		$group = Group::where('name',$groupName);
 		echo $group->id;
