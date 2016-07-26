@@ -19,7 +19,7 @@ class CheckUserRole
     {
 
         $user_role = Auth::user()->role;
-        if($user_role == 'admin'){
+        if($user_role === 'admin'){
             // ako je prijavljeni korisnik admin tada ga pusti da izvrsi zahtjev
             return $next($request);
         }
