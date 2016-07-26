@@ -20,6 +20,6 @@ class Group extends Model
     protected $dates = ['deleted_at'];
 
     public function users(){
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User', 'user_group');
     }
 }

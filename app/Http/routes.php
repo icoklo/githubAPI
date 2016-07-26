@@ -50,6 +50,8 @@ Route::group(['middleware' => ['auth','check.role']], function(){
 	Route::post('/user/{id}', 'UserController@addUserToGroup');
 });
 
+Route::get('/user/groups', 'UserController@userGroups')->middleware('auth'); // korisnik ima izlist svih grupa u kojima se nalazi
+
 Route::get('/home', 'HomeController@index');
 
 Route::post('/github-data','GithubDataController@storeData');

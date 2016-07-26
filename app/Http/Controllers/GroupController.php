@@ -28,7 +28,7 @@ class GroupController extends Controller
 		$group->save();
 		$message = "Grupa ". $request->input('name') ." je unesena.";
 		$array = array('kod' => 200, 'poruka' => $message);
-		return (new Response($array,200))->header('Content-Type', 'application/json');
+		return new Response($array,200)->header('Content-Type', 'application/json');
 	}
 
 	public function editGroup(GroupRequest $request,$id)
@@ -42,7 +42,7 @@ class GroupController extends Controller
 
 		$message = "Uspjesno uredena grupa";
 		$array = array('kod' => 200, 'poruka' => $message);
-		return (new Response($array,200))->header('Content-Type', 'application/json');
+		return new Response($array,200)->header('Content-Type', 'application/json');
 
 	}
 
@@ -51,7 +51,7 @@ class GroupController extends Controller
 		$find_group = Group::findOrFail($id);
 
 		$array = array('id' => $find_group->id, 'name' => $find_group->name, 'description' => $find_group->description);
-		return (new Response($array,200))->header('Content-Type', 'application/json');
+		return new Response($array,200)->header('Content-Type', 'application/json');
 	}
 
 	// function which will return all groups or empty array
@@ -62,7 +62,7 @@ class GroupController extends Controller
 		foreach ($groups as $group){
 			$array[] = array('id' => $group->id, 'name' => $group->name, 'description' => $group->description);
 		}
-		return (new Response($array,200))->header('Content-Type', 'application/json');
+		return new Response($array,200)->header('Content-Type', 'application/json');
 	}
 
 }
