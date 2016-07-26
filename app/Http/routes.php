@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth','check.role']], function(){
 
 Route::get('/user/groups', 'UserController@userGroups')->middleware('auth'); // korisnik ima izlist svih grupa u kojima se nalazi
 
+Route::get('/user/group/{id}', 'UserController@showMyGroupData')->middleware('auth'); // korisnik moze vidjeti podatke grupe u kojoj se nalazi
+
 Route::get('/home', 'HomeController@index');
 
 Route::post('/github-data','GithubDataController@storeData');

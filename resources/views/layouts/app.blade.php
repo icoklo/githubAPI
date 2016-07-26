@@ -59,7 +59,9 @@
                         <li><a href="{{ url('/login') }}">Login</a></li>
 
                     @else
+                        <li><a href="{{ url('/user/groups') }}">Sve moje grupe</a></li>
                         <li><a href="{{ url('/group/list') }}">Sve grupe</a></li>
+                        <li><a href="{{ url('/user/list') }}">Svi korisnici</a></li>
                         <li><a href="{{ url('/register') }}">Register</a></li>
                         <li> <a href="{{ url('/logout') }}"> {{ Auth::user()->username }} | Logout</a></li>
                     @endif

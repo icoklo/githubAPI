@@ -20,10 +20,10 @@ class UserController extends Controller
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
-	public function addUserToGroup(UserGroupRequest $request,$idKorisnika)
+	public function addUserToGroup(UserGroupRequest $request,$id)
 	{
 		$group_name = $request->input('groupName');
-		$user = User::findOrFail($idKorisnika);
+		$user = User::findOrFail($id);
 		$array = array();
 
 		// dohvacanje grupe prema imenu grupe, dohvaca se prvi model koji zadovoljava upit
@@ -37,14 +37,46 @@ class UserController extends Controller
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
+	// list all groups user belongs to
 	public function userGroups()
 	{
 		$logged_user = Auth::user();
-		$groups = $logged_user->groups()->get();
+		$groups = $logged_user->groups;
 		$array = array();
 		foreach ($groups as $group) {
 			$array[] = array('id' => $group->id,'name' => $group->name, 'description' => $group->description);
 		}
 		return (new Response($array,200))->header('Content-Type', 'application/json');
+	}
+
+	public function checkUser($user_groups,$id)
+	{
+		$current_group = Group::findOrFail($id);
+		// all groups user belongs to
+		foreach ($user_groups as $group) {
+			if($current_group->id === $group->id){
+				// if user belongs to current group he will see group data
+				return true;
+			}
+		}
+		return false;
+	}
+
+	// show data of group user belongs to
+	public function showMyGroupData($id)
+	{
+		$logged_user = Auth::user();
+		$user_groups = $logged_user->groups;
+		// grupa prema id
+		$array = array();
+
+		if(checkUser() === true){
+			$array[] = array('id' => $group->id,'name' => $group->name, 'description' => $group->description);
+			return (new Response($array,200))->header('Content-Type', 'application/json');
+		}
+		else{
+			abort(403, 'You do not belong to this group!');
+		}
+
 	}
 }
