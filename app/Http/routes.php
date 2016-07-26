@@ -47,7 +47,7 @@ Route::group(['middleware' => ['auth','check.role']], function(){
 
 	Route::get('/user/list', 'UserController@listUsers'); // lista svih korisnika
 
-	Route::post('/user/{id}', 'UserController@editUser');
+	Route::post('/user/{id}', 'UserController@addUserToGroup');
 });
 
 Route::get('/home', 'HomeController@index');
