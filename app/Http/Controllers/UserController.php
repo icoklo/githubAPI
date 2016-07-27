@@ -17,11 +17,11 @@ class UserController extends Controller
 
 		foreach ($users as $user){
 			$array[] = [
-							'id' => $user->id,
-							'username' => $user->username,
-							'email' => $user->email,
-							'role' => $user->role
-						];
+			'id' => $user->id,
+			'username' => $user->username,
+			'email' => $user->email,
+			'role' => $user->role
+			];
 		}
 
 		return (new Response($array, 200))->header('Content-Type', 'application/json');
@@ -34,7 +34,7 @@ class UserController extends Controller
 		$array = array();
 
 		// dohvacanje grupe prema imenu grupe, dohvaca se prvi model koji zadovoljava upit
-		$group = Group::where('name',$group_name)->first();
+		$group = Group::where('name',$group_name)->firstOrFail();
 
 		// ovako se radi spremanje u pivot tablicu user_group kod veze vise-vise
 		$user->groups()->attach($group->id);
@@ -84,7 +84,11 @@ class UserController extends Controller
 			return (new Response($array,200))->header('Content-Type', 'application/json');
 		}
 		else{
-			abort(403, 'Ne pripadas toj grupi!');
+			// abort(403, 'Ne pripadas toj grupi!');
+			$message = "Ne pripadas toj grupi .";
+			$array = array('kod'=>403, 'poruka'=>$message);
+
+			return (new Response($array, 403))->header('Content-Type', 'application/json');
 		}
 
 	}

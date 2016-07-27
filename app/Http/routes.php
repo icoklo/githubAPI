@@ -18,7 +18,8 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
-Route::get('/test','GroupController@test');
+Route::post('/test','GroupController@test');
+Route::get('/greske','GroupController@printErrors')->name('greske');
 
 // Authentication Routes...
 Route::get('login', 'Auth\AuthController@showLoginForm');
@@ -50,17 +51,13 @@ Route::group(['middleware' => ['auth','check.role']], function(){
 
 Route::group(['middleware' => ['auth']], function(){
 
-Route::get('/user/groups', 'UserController@userGroups')->middleware('auth'); // korisnik ima izlist svih grupa u kojima se nalazi
+Route::get('/user/groups', 'UserController@userGroups'); // korisnik ima izlist svih grupa u kojima se nalazi
 
-Route::get('/user/group/{id}', 'UserController@showMyGroupData')->middleware('auth'); // korisnik moze vidjeti podatke grupe u kojoj se nalazi
+Route::get('/user/group/{id}', 'UserController@showMyGroupData'); // korisnik moze vidjeti podatke grupe u kojoj se nalazi
 
 });
 
 Route::get('/home', 'HomeController@index');
 
 Route::post('/github-data','GithubDataController@storeData');
-
-
-
-
 

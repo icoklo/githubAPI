@@ -6,6 +6,7 @@ use App\Http\Requests\Request;
 
 class UserGroupRequest extends Request
 {
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -21,11 +22,14 @@ class UserGroupRequest extends Request
      *
      * @return array
      */
-    public function rules()
+    public function rules(Validator $validator)
     {
         return [
             //
             'groupName' => 'required',
         ];
     }
+
+
+
 }

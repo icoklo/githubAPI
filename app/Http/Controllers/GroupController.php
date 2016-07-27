@@ -4,19 +4,34 @@ namespace App\Http\Controllers;
 
 use App\Group;
 use App\Http\Requests\GroupRequest;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 
-class GroupController extends Controller
+class GroupController extends ApiController
 {
 
-	public function test()
+	public function test(GroupRequest $request, Validator $validator)
 	{
 		// abort(405,'greska');
 		// return (new Response("<p>jej</p>"));
 		//return response("<p>jej</p>");
-		return new Response("Super");
+		// return new Response("Super");
+
+		$messages = $validator->errors();
+		echo $messages->first('name');
+	}
+
+	public function printErrors(GroupRequest $request, Validator $validator)
+	{
+		// abort(405,'greska');
+		// return (new Response("<p>jej</p>"));
+		//return response("<p>jej</p>");
+		// return new Response("Super");
+		echo "tu smo";
+		$messages = $validator->errors();
+		echo $messages->first('name');
 	}
 
 	public function createGroup(GroupRequest $request)
