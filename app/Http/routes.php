@@ -39,7 +39,7 @@ Route::group(['middleware' => ['auth','check.role']], function(){
 
 	Route::post('/group','GroupController@createGroup'); // create group
 
-	Route::post('/group/{id}','GroupController@editGroup'); // edit grupe
+	Route::post('/group/{id}','GroupController@editDeleteGroup'); // edit grupe
 
 	Route::get('/group/list', 'GroupController@listGroups'); // lista svih grupa
 

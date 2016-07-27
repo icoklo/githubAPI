@@ -32,18 +32,28 @@ class GroupController extends Controller
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
-	public function editGroup(GroupRequest $request,$id)
+	public function editDeleteGroup(GroupRequest $request,$id)
 	{
 		$find_group = Group::findOrFail($id);
 
-		$old_name = $find_group->name;
-		$find_group->name = $request->input('name');
-		$find_group->description = $request->input('description');
-		$find_group->save();
+		$delete_group = $request->input('delete');
+		if($delete_group === 'yes'){
+			$find_group->delete();
+			$message = "Uspjesno izbrisana grupa";
+			$array = array('kod' => 200, 'poruka' => $message);
+			return (new Response($array,200))->header('Content-Type', 'application/json');
+		}
+		else
+		{
+			$old_name = $find_group->name;
+			$find_group->name = $request->input('name');
+			$find_group->description = $request->input('description');
+			$find_group->save();
 
-		$message = "Uspjesno uredena grupa";
-		$array = array('kod' => 200, 'poruka' => $message);
-		return (new Response($array,200))->header('Content-Type', 'application/json');
+			$message = "Uspjesno uredena grupa";
+			$array = array('kod' => 200, 'poruka' => $message);
+			return (new Response($array,200))->header('Content-Type', 'application/json');
+		}
 
 	}
 

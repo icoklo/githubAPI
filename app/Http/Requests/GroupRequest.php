@@ -27,6 +27,7 @@ class GroupRequest extends Request
         return [
             'name' => 'required',
             'description' => 'required',
+            'delete' => 'required',
         ];
     }
 }
