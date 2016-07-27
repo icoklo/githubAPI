@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Foundation\Http\response;
 use Illuminate\Support\Facades\Auth;
 
 

@@ -3,11 +3,12 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Http\Response;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -51,7 +52,7 @@ class Handler extends ExceptionHandler
             // abort(404);
             $message = "Taj model ne postoji!";
             $array = array('kod' => 404, 'poruka' => $message);
-            return (new Response($array,404))->header('Content-Type', 'application/json');
+            return response($array,404)->header('Content-Type', 'application/json');
         }
         else
         {
