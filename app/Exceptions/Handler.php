@@ -47,8 +47,11 @@ class Handler extends ExceptionHandler
     {
         if($e instanceOf ModelNotFoundException)
         {
-            // ako netko slucajno unese krivi id grupe i ulovi se ModelNotFoundException generira se ova greska sa kodom 404
-            abort(404);
+            // ako netko slucajno unese krivi id grupe i ulovi se ModelNotFoundException generira se ova greska sa kodom 404 u json formatu
+            // abort(404);
+            $message = "Taj model ne postoji!";
+            $array = array('kod' => 404, 'poruka' => $message);
+            return (new Response($array,404))->header('Content-Type', 'application/json');
         }
         else
         {

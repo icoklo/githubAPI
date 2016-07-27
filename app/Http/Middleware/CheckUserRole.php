@@ -24,7 +24,11 @@ class CheckUserRole
             return $next($request);
         }
         else{
-            abort(403, "Samo administrator moze pristupiti ovoj stranici");
+
+            // abort(403, "Samo administrator moze pristupiti ovoj stranici");
+            $message = "Samo administrator moze pristupiti ovoj stranici";
+            $array = array('kod' => 403, 'poruka' => $message);
+            return response($array,403)->header('Content-Type', 'application/json');
         }
 
     }

@@ -32,6 +32,7 @@ class GroupController extends Controller
 		return (new Response($array,200))->header('Content-Type', 'application/json');
 	}
 
+	// function for editing or for deleting group
 	public function editDeleteGroup(GroupRequest $request,$id)
 	{
 		$find_group = Group::findOrFail($id);
