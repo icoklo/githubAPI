@@ -1,0 +1,39 @@
+Zadatak sa webhooks: 
+
+- ako negdi zapnes mores pogledati kod na https://github.com/plavatvornica/careercentar_api u grani dev
+- Napraviti login za korisnika (NAPRAVLJENO)
+- Vidi kako da razluèiš o kojem se repozitoriju radi (NAPRAVLJENO)
+- podatke spremaj u tablicu tako da znas kojem repozitoriju pripadaju (NAPRAVLJENO)
+- napraviti tablicu za spremanje podataka koje mi vrati github za npr. stvaranje novog komita, 
+stvaranje novog issua itd. i ta tablica nek ima sljedece stupce (id,text (response koji mi vrati github), i laravelovi timestampovi) (NAPRAVLJENO)
+- napraviti 2 tipa korisnika: admin i developer (NAPRAVLJENO)
+- admin moze kreirati grupe, a svaka grupa ima sljedece podatke (id, ime, description, created_at, updated_at, deleted) --> pogledati soft delete (NAPRAVLJENO)
+- admin moze kreirati usere, a svaki user ima (id,username,email,created_at,updated_at) (NAPRAVLJENO)
+- admin ima izlist svih grupa (NAPRAVLJENO)
+- admin moze korisnike dodavati u grupe (NAPRAVLJENO)
+- korisnik moze biti u vise grupa (NAPRAVLJENO)
+- korisnik ima izlist svih grupa u kojima se nalazi (NAPRAVLJENO)
+- korisnik moze pristupiti grupi u koju je dodan (NAPRAVLJENO) 
+
+Rute za grupe:
+GET /group/list - izlist svih grupa
+GET /group/:id - prikaz podataka odredene grupe 
+POST /group - create grupe
+POST /group/:id - edit grupe
+
+BITNA napomena za heroku, on si sam postavi APP_KEY varijablu na odredenu vrijednost i zbog toga ti opce nist ne znaci tvoja vrijednost u .env fajlu
+najbolje je izbrisati tu varijablu ili ju ostaviti ali postaviti na ispravnu vrijednost od 32 znaka
+
+Tablice
+users: (id,username,password,email,role,created_at,updated_at,remember_token), pri cemu role moze biti developer ili admin (NAPRAVLJENO)
+github_webhooks (id,event_name,payload (response koji mi vrati github), repository i laravelovi timestampovi) (NAPRAVLJENO)
+group (id, name, description, created_at, updated_at, deleted)
+users_groups (user_id,group_id i laravelovi timestampovi)
+
+Veza izmedu korisnika i grupe je vise-vise (jedan korisnik moze biti u vise grupa i jedna grupa moze imati vise korisnika)
+
+Secret za webhook:
+FcI8j1BuZz9BgbCdJC8A
+
+Heroku app (https://heroku-github-api.herokuapp.com/):
+lozinka za usera igor.coklo@gmail.com: igor12

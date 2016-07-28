@@ -35,6 +35,9 @@ require __DIR__.'/../bootstrap/autoload.php';
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
+// novo dodana linija
+// $app->alias('request', 'App\Http\Requests\ApiRequest');
+
 /*
 |--------------------------------------------------------------------------
 | Run The Application
@@ -51,6 +54,7 @@ $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
+    // $request = App\Http\Requests\ApiRequest::capture()
 );
 
 $response->send();

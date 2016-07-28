@@ -3,35 +3,43 @@
 namespace App\Http\Controllers;
 
 use App\Group;
+use App\Http\Requests\ApiRequest;
 use App\Http\Requests\GroupRequest;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class GroupController extends ApiController
 {
 
-	public function test(GroupRequest $request, Validator $validator)
+	public function test(GroupRequest $request)
 	{
-		// abort(405,'greska');
-		// return (new Response("<p>jej</p>"));
-		//return response("<p>jej</p>");
-		// return new Response("Super");
+		/* abort(405,'greska');
+		return (new Response("<p>jej</p>"));
+		return response("<p>jej</p>");
+		return new Response("Super"); */
 
-		$messages = $validator->errors();
-		echo $messages->first('name');
-	}
+		/* $validator = Validator::make($request->all(), [
+			'name' => 'required',
+			]);
 
-	public function printErrors(GroupRequest $request, Validator $validator)
-	{
-		// abort(405,'greska');
-		// return (new Response("<p>jej</p>"));
-		//return response("<p>jej</p>");
-		// return new Response("Super");
-		echo "tu smo";
-		$messages = $validator->errors();
-		echo $messages->first('name');
+		if($validator->fails())
+		{
+			// echo "tu";
+			// tu se dobije polje zato jer svako polje moze imati vise gresaka
+			foreach ($validator->messages()->getMessages() as $field_name => $messages) {
+				foreach ($messages as $message) {
+					echo $field_name . ":" . $message;
+				}
+			}
+
+		} */
+
+		echo Request::input('name');
+		// echo $request->input('name');
+
 	}
 
 	public function createGroup(GroupRequest $request)

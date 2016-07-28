@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
+use App\Http\Requests\ApiRequest;
 use Illuminate\Support\Facades\Auth;
 
-class GroupRequest extends Request
+class GroupRequest extends ApiRequest
 {
 
     /**
@@ -23,12 +23,16 @@ class GroupRequest extends Request
      *
      * @return array
      */
+
     public function rules()
     {
-        return [
+        // echo __FUNCTION__ ;
+        return
+        [
             'name' => 'required',
             'description' => 'required',
             'delete' => 'required',
         ];
     }
+
 }

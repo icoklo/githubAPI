@@ -18,8 +18,9 @@ Route::get('/', function () {
 	return view('welcome');
 });
 
+// testiranje validacije
 Route::post('/test','GroupController@test');
-Route::get('/greske','GroupController@printErrors')->name('greske');
+Route::post('/greske','GroupController@test')->name('greske');
 
 // Authentication Routes...
 Route::get('login', 'Auth\AuthController@showLoginForm');

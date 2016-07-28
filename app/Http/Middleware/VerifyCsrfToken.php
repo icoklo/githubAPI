@@ -17,6 +17,7 @@ class VerifyCsrfToken extends BaseVerifier
         '/group/*',
         '/user',
         '/user/*',
-        '/test'
+        '/test',
+        '/greske'
     ];
 }
