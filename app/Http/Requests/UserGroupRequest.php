@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class UserGroupRequest extends Request
+class UserGroupRequest extends ApiRequest
 {
 
     /**
@@ -30,6 +30,13 @@ class UserGroupRequest extends Request
         ];
     }
 
+    public function messages()
+    {
+        return array
+        (
+            'required' => 'Polje :attribute je obavezno',
+        );
+    }
 
 
 }

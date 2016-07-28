@@ -16,7 +16,8 @@ class UserController extends Controller
 		$array = [];
 
 		foreach ($users as $user){
-			$array[] = [
+			$array[] =
+			[
 			'id' => $user->id,
 			'username' => $user->username,
 			'email' => $user->email,
@@ -27,7 +28,7 @@ class UserController extends Controller
 		return (new Response($array, 200))->header('Content-Type', 'application/json');
 	}
 
-	public function addUserToGroup(UserGroupRequest $request,$id)
+	public function addUserToGroup(UserGroupRequest $user_request, Request $request, $id)
 	{
 		$group_name = $request->input('groupName');
 		$user = User::findOrFail($id);

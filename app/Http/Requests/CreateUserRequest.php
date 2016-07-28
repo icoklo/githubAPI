@@ -30,4 +30,13 @@ class CreateUserRequest extends ApiRequest
 		];
 	}
 
+	public function messages()
+    {
+        return array
+        (
+            'required' => 'Polje :attribute je obavezno',
+            'email' => 'U polju :attribute se ocekuje mail, pa bi trebali unijeti @ znak u to polje'
+        );
+    }
+
 }

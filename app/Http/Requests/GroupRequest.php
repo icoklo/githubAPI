@@ -35,4 +35,12 @@ class GroupRequest extends ApiRequest
         ];
     }
 
+    public function messages()
+    {
+        return array
+        (
+            'required' => 'Polje :attribute je obavezno',
+        );
+    }
+
 }

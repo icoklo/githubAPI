@@ -51,12 +51,12 @@ class GithubDataController extends Controller
 			$web_hook->repository = $repository;
 			$web_hook->save();
 
-			$polje = array('kod' => 200, 'poruka' => 'Uspjeh');
-			return (new Response($polje,200))->header('Content-Type', 'application/json');
+			$array = array('kod' => 200, 'poruka' => 'Uspjeh');
+			return (new Response($array,200))->header('Content-Type', 'application/json');
 		}
 		else{
-			$polje = array('kod' => 400, 'poruka' => 'Desila se greska');
-			return (new Response($polje,400))->header('Content-Type', 'application/json');
+			$array = array('kod' => 400, 'poruka' => 'Desila se greska');
+			return (new Response($array,400))->header('Content-Type', 'application/json');
 		}
 
 	}

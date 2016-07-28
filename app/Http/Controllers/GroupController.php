@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Group;
 use App\Http\Requests\ApiRequest;
 use App\Http\Requests\GroupRequest;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+
+// ovo je jako dobra stvar
+// use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
 
 
 class GroupController extends ApiController
 {
 
-	public function test(GroupRequest $request)
+	public function test(GroupRequest $group_request, Request $request)
 	{
 		/* abort(405,'greska');
 		return (new Response("<p>jej</p>"));
@@ -37,12 +40,12 @@ class GroupController extends ApiController
 
 		} */
 
-		echo Request::input('name');
-		// echo $request->input('name');
+		// echo Request::input('name');
+		echo $request->input('name');
 
 	}
 
-	public function createGroup(GroupRequest $request)
+	public function createGroup(GroupRequest $group_request, Request $request)
 	{
 		// echo "tu smo";
 		$group = new Group;
@@ -56,7 +59,7 @@ class GroupController extends ApiController
 	}
 
 	// function for editing or for deleting group
-	public function editDeleteGroup(GroupRequest $request,$id)
+	public function editDeleteGroup(GroupRequest $group_request, Request $request, $id)
 	{
 		$find_group = Group::findOrFail($id);
 
