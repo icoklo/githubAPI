@@ -26,6 +26,7 @@ class GroupRequest extends ApiRequest
 
     public function rules()
     {
+        // echo "rules:".$this->status;
         // echo __FUNCTION__ ;
         return
         [

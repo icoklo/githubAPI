@@ -54,6 +54,11 @@ class Handler extends ExceptionHandler
             $array = array('kod' => 404, 'poruka' => $message);
             return response($array,404)->header('Content-Type', 'application/json');
         }
+        else if($e instanceOf ValidationException)
+        {
+            // ako se desila greska kod validacije baci se greska sa kodom 400 i korisniku se ispisu odredene poruke
+            return response($e->response,400)->header('Content-Type', 'application/json');
+        }
         else
         {
             return parent::render($request, $e);

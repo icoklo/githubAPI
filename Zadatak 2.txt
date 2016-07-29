@@ -3,5 +3,5 @@ Napraviti svoj custom ApiRequest (klasu) koji nasljeðuje Iluminate\Http\Request 
 (ne moras koristiti tu funkciju, ali ona vraca 403 ako korisnik nije autoriziran) i messages . 
 Nakon toga napraviti konstruktor u toj klasi ApiRequest i paziti da overridas konstruktor od klase roditelj, u tom konstruktoru napraviti validator, nakon toga napraviti validaciju
 sa tim validatorom (validator prima pravila po kojima se radi validacija te poruke koje treba ispisati ako validacija nije prosla) i na kraju u konstruktoru vratiti neki svoj odgovor ili ako nede tako 
-vratiti tj baciti neki svoj custom exception 
+vratiti tj baciti neki exception. 
 Nakon toga nek svi moji Requestovi nasljeduju taj moj ApiRequest i nek on radi validaciju post parametara, izbaciti ovu form request validaciju i zapravo trebam manualno napraviti svoju custom validaciju 

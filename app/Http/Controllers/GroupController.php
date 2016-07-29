@@ -42,6 +42,7 @@ class GroupController extends ApiController
 
 		// echo Request::input('name');
 		echo $request->input('name');
+		// return response($group_request->array, $group_request->status)->header('Content-Type', 'application/json');
 
 	}
 
@@ -56,6 +57,7 @@ class GroupController extends ApiController
 		$array = array('kod' => 200, 'poruka' => $message);
 
 		return (new Response($array,200))->header('Content-Type', 'application/json');
+
 	}
 
 	// function for editing or for deleting group

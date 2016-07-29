@@ -6,11 +6,17 @@ use Illuminate\Http\Request as BaseRequest;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 // this class is used for my custom validation in laravel
 abstract class ApiRequest
 {
 
+	public $array = array();
+	public $status = 200;
+
+	// konstruktor ne smije vracati nikakve podatke kao odgovor, a pod time se podrazumijeva da on ne smije vracati nikakav response
+	// ali moze baciti neki exception
 	public function __construct(){
 		// echo "tu smo";
 
@@ -18,36 +24,30 @@ abstract class ApiRequest
 		// a koliko sem skuzil ovaj $this->rules trazi funkciju rules u svoj djeci ove klase (sve klase koje nasljeduju ovu klasu)
 		// i izvrsava odredenu funkciju rules u odredenoj klasi
 		$validator = Validator::make(Request::all(), $this->rules(), $this->messages());
-		$array = array();
 
 		if($validator->fails())
 		{
+			$this->status = 400;
 			// echo "tu";
 			// tu se dobije polje zato jer svako polje moze imati vise gresaka
 			foreach ($validator->messages()->getMessages() as $field_name => $messages) {
 				foreach ($messages as $message) {
-					$array[] = array('poruka' => $message);
+					$this->array[] = array('poruka' => $message);
 					// echo $message . "<br/>";
 				}
 			}
 
+			throw new ValidationException($validator,$this->array);
 		}
-		// echo json$array;
-		$this->printErrorMessages($array);
+
+		// $this->printError();
 	}
 
-	public function printErrorMessages($array)
+	/* public function printError()
 	{
-		// echo "Tu smo";
-		// var_dump($array);
-		if(count($array)!==0)
-		{
-			echo json_encode($array);
-		}
-
-		// nezz zast mi ova linija ispod ne radi!!!
-		// return (new Response($array,200))->header('Content-Type', 'application/json');
-	}
+		// zasto tu ispis ne radi nezz
+		return response($this->array, $this->status)->header('Content-Type', 'application/json');
+	} */
 
 	abstract function rules();
 
