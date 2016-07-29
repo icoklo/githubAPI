@@ -12,13 +12,12 @@ use Illuminate\Validation\ValidationException;
 abstract class ApiRequest
 {
 
-	public $array = array();
-	public $status = 200;
-
 	// konstruktor ne smije vracati nikakve podatke kao odgovor, a pod time se podrazumijeva da on ne smije vracati nikakav response
 	// ali moze baciti neki exception
 	public function __construct(){
 		// echo "tu smo";
+
+		$array = array();
 
 		// sve funkcije koje nasljeduju ovaj ApiRequest nasljeduju njegov konstruktor
 		// a koliko sem skuzil ovaj $this->rules trazi funkciju rules u svoj djeci ove klase (sve klase koje nasljeduju ovu klasu)
@@ -27,17 +26,17 @@ abstract class ApiRequest
 
 		if($validator->fails())
 		{
-			$this->status = 400;
+
 			// echo "tu";
 			// tu se dobije polje zato jer svako polje moze imati vise gresaka
 			foreach ($validator->messages()->getMessages() as $field_name => $messages) {
 				foreach ($messages as $message) {
-					$this->array[] = array('poruka' => $message);
+					$array[] = array('poruka' => $message);
 					// echo $message . "<br/>";
 				}
 			}
 
-			throw new ValidationException($validator,$this->array);
+			throw new ValidationException($validator,$array);
 		}
 
 		// $this->printError();
@@ -48,6 +47,11 @@ abstract class ApiRequest
 		// zasto tu ispis ne radi nezz
 		return response($this->array, $this->status)->header('Content-Type', 'application/json');
 	} */
+
+	public function authorize()
+	{
+		// Napraviti implementaciju
+	}
 
 	abstract function rules();
 
