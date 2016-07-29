@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 // this class is used for my custom validation in laravel
-abstract class ApiRequest
+abstract class ApiRequest extends BaseRequest
 {
 
 	// konstruktor ne smije vracati nikakve podatke kao odgovor, a pod time se podrazumijeva da on ne smije vracati nikakav response
 	// ali moze baciti neki exception
-	public function __construct(){
-		// echo "tu smo";
+	public function __construct(array $query = array(), array $request = array(), array $attributes = array(), array $cookies = array(), array $files = array(), array $server = array(), $content = null){
+
+		parent::__construct($query, $request, $attributes, $cookies, $files, $server, $content);
 
 		$array = array();
 
@@ -26,8 +27,6 @@ abstract class ApiRequest
 
 		if($validator->fails())
 		{
-
-			// echo "tu";
 			// tu se dobije polje zato jer svako polje moze imati vise gresaka
 			foreach ($validator->messages()->getMessages() as $field_name => $messages) {
 				foreach ($messages as $message) {
@@ -38,8 +37,6 @@ abstract class ApiRequest
 
 			throw new ValidationException($validator,$array);
 		}
-
-		// $this->printError();
 	}
 
 	/* public function printError()

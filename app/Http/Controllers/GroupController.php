@@ -17,8 +17,9 @@ use Illuminate\Support\Facades\Validator;
 class GroupController extends ApiController
 {
 
-	public function test(GroupRequest $group_request, Request $request)
+	public function test(GroupRequest $request)// Request $request)
 	{
+		// return "tu smo";
 		/* abort(405,'greska');
 		return (new Response("<p>jej</p>"));
 		return response("<p>jej</p>");
@@ -41,9 +42,9 @@ class GroupController extends ApiController
 		} */
 
 		// echo Request::input('name');
-		echo $request->input('name');
 		// echo $group_request->input('name');
-		// return response($group_request->array, $group_request->status)->header('Content-Type', 'application/json');
+		return (new Response($request->all(), 200))
+				->header('Content-Type', 'application/json');
 
 	}
 
