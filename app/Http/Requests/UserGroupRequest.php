@@ -22,7 +22,7 @@ class UserGroupRequest extends ApiRequest
      *
      * @return array
      */
-    public function rules(Validator $validator)
+    public function rules()
     {
         return [
             //
