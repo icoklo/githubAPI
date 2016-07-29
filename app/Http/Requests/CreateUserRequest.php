@@ -13,6 +13,7 @@ class CreateUserRequest extends ApiRequest
 	{
 		// return false;
 		return true;
+
 	}
 
 	/**

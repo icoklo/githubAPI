@@ -42,6 +42,7 @@ class GroupController extends ApiController
 
 		// echo Request::input('name');
 		echo $request->input('name');
+		// echo $group_request->input('name');
 		// return response($group_request->array, $group_request->status)->header('Content-Type', 'application/json');
 
 	}

@@ -15,7 +15,10 @@ class GroupRequest extends ApiRequest
      */
     public function authorize()
     {
-        return true;
+        if (Auth::user()->role == 'admin'){
+            return true;
+        }
+        return false;
     }
 
     /**

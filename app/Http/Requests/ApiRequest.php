@@ -48,10 +48,7 @@ abstract class ApiRequest
 		return response($this->array, $this->status)->header('Content-Type', 'application/json');
 	} */
 
-	public function authorize()
-	{
-		// Napraviti implementaciju
-	}
+	abstract function authorize();
 
 	abstract function rules();
 
