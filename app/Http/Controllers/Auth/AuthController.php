@@ -37,6 +37,7 @@ class AuthController extends Controller
      */
     public function __construct()
     {
+        // Sto radi ova linija ispod ???
         // $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
