@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\ApiRequest;
+// use App\Http\Requests\ApiRequest;
 use Illuminate\Support\Facades\Auth;
 
 class GroupRequest extends ApiRequest
@@ -15,10 +15,12 @@ class GroupRequest extends ApiRequest
      */
     public function authorize()
     {
+        /*
         if (Auth::user()->role == 'admin'){
             return true;
         }
-        return false;
+        return false; */
+        return true;
     }
 
     /**

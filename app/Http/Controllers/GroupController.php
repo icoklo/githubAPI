@@ -42,13 +42,14 @@ class GroupController extends ApiController
 		} */
 
 		// echo Request::input('name');
-		// echo $group_request->input('name');
-		return (new Response($request->all(), 200))
-				->header('Content-Type', 'application/json');
+
+		echo "ime: ". $request->input('name');
+		// return (new Response($request->all(), 200))
+		//		->header('Content-Type', 'application/json');
 
 	}
 
-	public function createGroup(GroupRequest $group_request, Request $request)
+	public function createGroup(GroupRequest $request)
 	{
 		// echo "tu smo";
 		$group = new Group;
@@ -63,7 +64,7 @@ class GroupController extends ApiController
 	}
 
 	// function for editing or for deleting group
-	public function editDeleteGroup(GroupRequest $group_request, Request $request, $id)
+	public function editDeleteGroup(GroupRequest $request, $id)
 	{
 		$find_group = Group::findOrFail($id);
 

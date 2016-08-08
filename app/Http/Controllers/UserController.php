@@ -29,7 +29,7 @@ class UserController extends Controller
 		return (new Response($array, 200))->header('Content-Type', 'application/json');
 	}
 
-	public function addUserToGroup(UserGroupRequest $user_request, Request $request, $id)
+	public function addUserToGroup(UserGroupRequest $request, $id)
 	{
 		$group_name = $request->input('groupName');
 		$user = User::findOrFail($id);
